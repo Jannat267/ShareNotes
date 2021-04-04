@@ -157,7 +157,7 @@
                   <div class="card mb-4">
                      <div class="card-header">
                         <i class="fas fa-table mr-1"></i>
-                        DataTable Example
+                        All Notes
                      </div>
                      <div class="card-body">
                         <div class="table-responsive">
@@ -168,6 +168,7 @@
                                     <th>Course Name</th>
                                     <th>Depertment</th>
                                     <th>Description</th>
+                                    <th>Upload Time</th>
                                     <th>Image</th>
                                     <th>File</th>
                                     <th>Action</th>
@@ -179,6 +180,7 @@
                                     <th>Course Name</th>
                                     <th>Depertment</th>
                                     <th>Description</th>
+                                    <th>Upload Time</th>
                                     <th>Image</th>
                                     <th>File</th>
                                     <th>Action</th>
@@ -191,6 +193,7 @@
                                  <td><?= $row['course']; ?> </td>
                                  <td><?= $row['dept']; ?> </td>
                                  <td><?= $row['description']; ?> </td>
+                                 <td><?= $row['datetime']; ?> </td>
                                 
                                  <td>
                                     <a href="imageview.php?image=<?=($row['n_image']);?>"><?= $row['n_image']; ?>

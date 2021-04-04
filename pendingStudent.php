@@ -30,13 +30,18 @@ if (isset($_GET['cancel'])) {
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 <body>
-		<div class="container">
+		<div class="container mr-5">
          <div class="row justify-content-center">
             <h1 class="text-info"> Show Information</h1>
-            <div class="card mb-4 col-lg-11">
-            <div class="card-body">
-              <table class="table table-hover table-dark" id="dataTable" width="100%" cellspacing="0">               
-                <thead>
+             <div class="card mb-4">
+                     <div class="card-header">
+                        <i class="fas fa-table mr-1"></i>
+                        All Students Requests
+                     </div>
+                     <div class="card-body">
+                        <div class="table-responsive">
+                           <table class="table table-hover table-bordered" id="dataTable" width="100%" cellspacing="0">
+                              <thead>
                   <th>Student Name</th>
                   <th>Student Id</th>
                   <th>Depertment</th>
@@ -45,8 +50,17 @@ if (isset($_GET['cancel'])) {
                   <th>Email</th>
                   <th>Action</th>
                </thead>
-              		<?php
-              		 while ($row = $result->fetch_assoc()) { ?>
+                              <tfoot>
+                  <th>Student Name</th>
+                  <th>Student Id</th>
+                  <th>Depertment</th>
+                  <th>University Name</th>
+                  <th>Address</th>
+                  <th>Email</th>
+                  <th>Action</th>
+               </tfoot>
+                  <?php
+                   while ($row = $result->fetch_assoc()) { ?>
                <tr>
                   <td><?= $row['student_name']; ?> </td>
                   <td><?= $row['student_id']; ?> </td>
@@ -55,7 +69,7 @@ if (isset($_GET['cancel'])) {
                   <td><?= $row['address']; ?> </td>
                   <td><?= $row['email']; ?> </td>
                   <td>
-                  	
+                    
                    <a href="pendingStudent.php?approve=<?=($row['id']); ?>" class="btn btn-success" type="submit" name="approve" >Approve  </a>
                    
                    <a href="pendingStudent.php?cancel=<?=($row['id']); ?>" class="btn btn-danger">Cancel</a>
@@ -64,9 +78,12 @@ if (isset($_GET['cancel'])) {
               </tr>
             <?php   }  ?>
 
-            </table>
-          </div>
-        </div>
+                    
+                              
+                           </table>
+                        </div>
+                     </div>
+                  </div>
          </div>
       </div>
 </body>

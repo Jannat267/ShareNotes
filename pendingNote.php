@@ -28,30 +28,52 @@ if (isset($_GET["cancel"])) {
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="container" width="50%" style="margin-left:220px;">
+
+
+
+    <div class="container mr-5">
          <div class="row justify-content-center">
             <h1 class="text-info"> Show Information</h1>
             
-            <div class="card mb-4">
-            <div class="card-body">
-              <table class="table table-hover table-border" id="dataTable" width="100%" cellspacing="0">    
-                <thead>
+             <div class="card mb-4">
+                     <div class="card-header">
+                        <i class="fas fa-table mr-1"></i>
+                        All Notes Requests
+                     </div>
+                     <div class="card-body">
+                        <div class="table-responsive">
+                           <table class="table table-hover table-bordered" id="dataTable" width="100%" cellspacing="0">
+                              <thead>
+                                 <tr>
+                                    <th>Note Name</th>
+                                    <th>Course Name</th>
+                                    <th>Depertment</th>
+                                    <th>Description</th>
+                                    <th>Upload Time</th>
+                                    <th>Image</th>
+                                    <th>File</th>
+                                    <th>Action</th>
+                                 </tr>
+                              </thead>
+                              <tfoot>
                   <th>Note Name</th>
                   <th>Course Name</th>
                   <th>Depertment</th>
                   <th>Description</th>
+                  <th>Upload Time</th>
                   <th>Image</th>
                   <th>File</th>
                   <th>Action</th>
-               </thead>
-              		<?php
-              		 while ($row = $result->fetch_assoc()) { ?>
+               </tfoot>
+                  <?php
+                   while ($row = $result->fetch_assoc()) { ?>
                     
                       <tr>
                         <td><?= $row['n_name']; ?> </td>
                         <td><?= $row['course']; ?> </td>
                         <td><?= $row['dept']; ?> </td>
                         <td><?= $row['description']; ?> </td>
+                        <td><?=$row['datetime'];?></td>
                         <td>
                           <a href="imageview.php?image=<?=($row['n_image']);?>">
                           <?= $row['n_image']; ?>
@@ -70,12 +92,11 @@ if (isset($_GET["cancel"])) {
                         </td>
                       </tr>
                     <?php   }  ?>
-                    
-               
-
-            </table>
-            </div>
-         </div>
+                              
+                           </table>
+                        </div>
+                     </div>
+                  </div>
       </div>
     </div>
   

@@ -67,9 +67,9 @@ class notes {
 		return $sql;
 	}
 
-	public function note_insert($note_name,$log_id,$course,$dept,$description,$image,$file)
+	public function note_insert($note_name,$log_id,$course,$dept,$description,$image,$file,$datetime)
 	{
-		 $sql=$this->connection->query("INSERT INTO `notes`( `n_name`,`s_id`, `course`, `dept`, `description`, `n_image`, `n_file`) VALUES ('$note_name','$log_id','$course','$dept','$description','$image','$file')") or die($this->connection->error);
+		 $sql=$this->connection->query("INSERT INTO `notes`( `n_name`,`s_id`, `course`, `dept`, `description`, `n_image`, `n_file`, `datetime`) VALUES ('$note_name','$log_id','$course','$dept','$description','$image','$file','$datetime')") or die($this->connection->error);
 		
 	}
 	public function pending_note()

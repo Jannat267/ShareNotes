@@ -7,15 +7,15 @@
     $dept='';
     $description='';
     $n_image='';
-     $temp_name='';
+    $temp_name='';
     $n_file='';
-    
+   
 
  if (isset($_POST["submit"])) {
     
 
      $note_name=$_POST['note_name'];
-
+     $s_id=$data['student_id'];
      $course=$_POST['course'];
      $dept=$_POST['dept'];
      $description=$_POST['description'];
@@ -25,10 +25,12 @@
      $tmp2=$_FILES['file']['tmp_name'];
      $imgfolder="picture/".$image;
      $filefolder="files/".$file;
+     $datetime=date("l jS \of F Y h:i:s A");
+     
 
      //$n_file=$_POST['n_file'];
      
-     if($note_insert=$function->note_insert($note_name,$log_id,$course,$dept,$description,$image,$file));
+     if($note_insert=$function->note_insert($note_name,$s_id,$course,$dept,$description,$image,$file,$datetime));
      {
         move_uploaded_file($tmp,$imgfolder);
         move_uploaded_file($tmp2,$filefolder);
@@ -76,7 +78,7 @@
                                             </div>
                                                 <div class="form-group col-md-8">
                                                     
-                                                    <input class="form-control py-6" id="inputFirstName" type="text" name="note_name" placeholder="Enter a notes name">
+                                                    <input class="form-control py-6" id="inputFirstName" type="text" name="note_name" placeholder="Enter a notes name" required>
                                                 </div>
                                             
                                         </div>
@@ -86,7 +88,7 @@
                                             </div>
                                                 <div class="form-group col-md-8">
                                                     
-                                                    <input class="form-control py-6" id="inputFirstName" type="text" name="course" placeholder="Enter your course name">
+                                                    <input class="form-control py-6" id="inputFirstName" type="text" name="course" placeholder="Enter your course name" required>
                                                 </div>
                                             
                                         </div>
@@ -95,7 +97,7 @@
                                                 <label class="small mb-1" for="inputFirstName">Depertment</label>
                                             </div>
                                                 <div class="form-group col-md-8"> 
-                                                    <input class="form-control py-6" id="inputFirstName" type="text" name="dept" placeholder="Enter your depertment name">
+                                                    <input class="form-control py-6" id="inputFirstName" type="text" name="dept" placeholder="Enter your depertment name" required>
                                                 </div>
                                             
                                         </div>
@@ -104,7 +106,7 @@
                                                 <label class="small mb-1" for="inputFirstName">Description</label>
                                             </div>
                                                 <div class="form-group col-md-8">
-                                                    <input class="form-control py-4" id="inputFirstName" type="text" name="description" placeholder="write a description">
+                                                    <input class="form-control py-4" id="inputFirstName" type="text" name="description" placeholder="write a description" required>
                                                     
                                                 </div>
                                             
@@ -114,7 +116,7 @@
                                                 <label class="small mb-1" for="inputFirstName">Upload Image</label>
                                             </div>
                                                 <div class="form-group col-md-8">
-                                                    <input class="" id="inputFirstName" type="file" name="image">
+                                                    <input class="" id="inputFirstName" type="file" name="image" required>
                                                 </div>
                                             
                                         </div>

@@ -173,6 +173,7 @@
                                                 <th>Course Name</th>
                                                 <th>Depertment</th>
                                                 <th>Description</th>
+                                                <th>Upload Time</th>
                                                 <th>Image</th>
                                                 <th>File</th>
                                                 
@@ -184,7 +185,8 @@
                                                           <td><?= $row['n_name']; ?> </td>
                                                           <td><?= $row['course']; ?> </td>
                                                           <td><?= $row['dept']; ?> </td>
-                                                          <td><?= $row['description']; ?> </td>
+                                                          <td><?= $row['description'];?></td>
+                                                          <td><?= $row['datetime']; ?></td>
                                                           <td><a href="imageview.php?image=<?=($row['n_image']);?>">
                                                              <?= $row['n_image']; ?>
                                                              </a></td>

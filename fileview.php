@@ -2,8 +2,8 @@
 session_start();
 if (isset($_GET['file'])) {
 
-	$file=$_GET['file'];
-	$_SESSION['file']=$file;
+	$_SESSION['file']=$_GET['file'];
+	
     //$function->approve_note($id);
 }
 	$file=$_SESSION['file'];
@@ -25,10 +25,12 @@ if (isset($_GET['file'])) {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     </head>
 <body>
-	<div class="container">
-		
-	<a href="files/<?php echo $file; ?>" download="<?php echo $file; ?>" class="btn btn-primary btn-lg">Download</a>
+	<div class="container ">
+	
+     
+	<a href="files/<?php echo $file; ?>" download="<?php echo $file; ?>" class="btn btn-primary btn-lg" id="dbtn" >Download</a>
 
+	
     </div>
 </body>
 </html>
