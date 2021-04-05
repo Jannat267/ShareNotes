@@ -31,7 +31,7 @@ if (isset($_GET["cancel"])) {
 
 
 
-    <div class="container mr-5">
+    <div class="container mr-5" style="width: 1050px;">
          <div class="row justify-content-center">
             <h1 class="text-info"> Show Information</h1>
             
@@ -86,7 +86,7 @@ if (isset($_GET["cancel"])) {
                        </td>
 
                         <td>
-                          <a href="pendingNote.php?approve=<?=($row['n_id']); ?>" class="btn btn-success" type="submit" name="approve">Approve  </a> 
+                          <a href="pendingNote.php?approve=<?=($row['n_id']); ?>" class="btn btn-success" type="submit" name="approve" id="btn">Approve  </a> 
                           
                           <a href="pendingNote.php?cancel=<?=$row['n_id']; ?>" class="btn btn-danger" >Cancel</a>
                         </td>

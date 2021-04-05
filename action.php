@@ -9,11 +9,11 @@
 
     if (isset($_POST["login"])) {
 
-        $email=$_POST['log_email'];
-        $pass=md5($_POST['log_pass']);
+        $_SESSION['email']=$_POST['log_email'];
+         $_SESSION['pass']=md5($_POST['log_pass']);
 
 
-        if ($sql=$function->student_login($email,$pass)) 
+        if ($sql=$function->student_login($_SESSION['email'],$_SESSION['pass'])) 
       {
         $_SESSION['data']= mysqli_fetch_assoc($sql);
         $num_rows = mysqli_num_rows($sql);
@@ -22,7 +22,6 @@
             header("location:dashboard.php");
         } 
         
-    
       }
 
       else {

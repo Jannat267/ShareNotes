@@ -47,7 +47,10 @@ class notes {
 	public function delete_student($id)
 	{
 
-		$sql=$this->connection->query("DELETE FROM `student` WHERE  id =$id ") or die($this->connection->error);
+		if(($this->connection->query("DELETE FROM `student` WHERE  id =$id ") or die($this->connection->error)) ==true)
+		{
+			header('Location: '.$_SERVER['PHP_SELF']);
+		}
 	}
 
 	public function student_login($email,$pass)
@@ -85,7 +88,10 @@ class notes {
 
 	public function delete_note($id)
 	{
-		$sql=$this->connection->query("DELETE FROM `notes` WHERE  n_id =$id ") or die($this->connection->error);
+		if(($this->connection->query("DELETE FROM `notes` WHERE  n_id =$id ") or die($this->connection->error)) ==true)
+		{
+			header('Location: '.$_SERVER['PHP_SELF']);
+		}
 	}
 
     public function admin_login($email,$pass)
@@ -95,7 +101,16 @@ class notes {
 	}
     public function logout()
 	{
+		// Initialize the session.
+		session_start();
+		// Unset all of the session variables.
+		unset($_SESSION);
+		// Finally, destroy the session.    
 		session_destroy();
+
+		// Include URL for Login page to login again.
+		header("Location: login.php");
+		exit;
 	}
 	public function edit($id)
 	{

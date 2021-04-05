@@ -30,7 +30,7 @@ if (isset($_GET['cancel'])) {
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 <body>
-		<div class="container mr-5">
+		<div class="container mr-5" style="width: 1050px;">
          <div class="row justify-content-center">
             <h1 class="text-info"> Show Information</h1>
              <div class="card mb-4">

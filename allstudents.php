@@ -20,13 +20,13 @@
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 <body>
-      <div class="container" style="margin-left:220px;">
+      <div class="container mr-5" style="width: 1050px;">
          <div class="row justify-content-center">
             <h1 class="text-info"> Show Information</h1>
             <div class="card mb-4" >
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-hover table-dark" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-hover table-border" id="dataTable" width="100%" cellspacing="0">
                        <thead>
                            <tr>
                               <th>Student Name</th>
