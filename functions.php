@@ -104,7 +104,7 @@ class notes {
 		// Initialize the session.
 		session_start();
 		// Unset all of the session variables.
-		unset($_SESSION);
+		session_unset();
 		// Finally, destroy the session.    
 		session_destroy();
 
@@ -112,23 +112,18 @@ class notes {
 		header("Location: login.php");
 		exit;
 	}
-	public function edit($id)
+	public function adminlogout()
 	{
-    	$sql=$this->connection->query("SELECT * FROM crud WHERE  id =$id") or die($this->connection->error);
-		if ($sql) {
-		
-          $row = $sql->fetch_assoc();
-		  $this->name = $row['name'];
-		  $this->location = $row['location'];
-	}
+		// Initialize the session.
+		session_start();
+		// Unset all of the session variables.
+		session_unset();
+		// Finally, destroy the session.    
+		session_destroy();
 
-	}
-	public function update($id,$name,$location)
-	{
-	 
-       $sql=$this->connection->query("UPDATE crud SET name='$name',location='$location'
-		  WHERE id= $id ") or die($this->connection->error);
-		
+		// Include URL for Login page to login again.
+		header("Location: adminlogin.php");
+		exit;
 	}
 }
 

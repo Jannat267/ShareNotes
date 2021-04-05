@@ -10,7 +10,7 @@
     if (isset($_POST["login"])) {
 
         $_SESSION['email']=$_POST['log_email'];
-         $_SESSION['pass']=md5($_POST['log_pass']);
+        $_SESSION['pass']=md5($_POST['log_pass']);
 
 
         if ($sql=$function->student_login($_SESSION['email'],$_SESSION['pass'])) 

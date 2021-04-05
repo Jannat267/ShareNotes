@@ -11,14 +11,21 @@
         $pass=$_POST['log_pass'];
         $_SESSION['email'] =$email;
         $_SESSION['pass'] = $pass;
-        $sql=$function->admin_login($email,$pass);
+
+       if ($sql=$function->admin_login($_SESSION['email'],$_SESSION['pass'])) 
+      {
+        $_SESSION['data']= mysqli_fetch_assoc($sql);
+        
         $num_rows = mysqli_num_rows($sql);
-        //var_dump($num_rows);
         if ($num_rows == 1) {
             //echo $num_row_pass."<br>";
             //$_SESSION['id']=$row['id'];
             header("location:admin.php");
-        } else {
+        }
+
+        }
+
+         else {
 
             echo " <div class='p-3 mb-2 bg-danger text-white'>Wrong email or password!!!</div>"; 
         }

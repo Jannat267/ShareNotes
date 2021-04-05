@@ -25,7 +25,7 @@ if (isset($_GET['file'])) {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     </head>
 <body>
-	<div class="container ">
+	<div class="container mt-5">
 	
      
 	<a href="files/<?php echo $file; ?>" download="<?php echo $file; ?>" class="btn btn-primary btn-lg" id="dbtn" >Download</a>
