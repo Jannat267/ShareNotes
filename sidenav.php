@@ -1,3 +1,9 @@
+<?php
+   session_start();
+   require('functions.php');
+
+   ?>
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -24,13 +30,15 @@
                         
                     </div>
                 </div>
-                
-
             </form>
           
             <!-- Navbar-->
             <ul class="navbar-nav ml-auto ml-md-0"style="color: white;">
-                        Admin 
+                        <?php
+            $name=$_SESSION["ainfo"]["name"];
+            // $name="Admin";
+            $function->show_admin_name($name);
+        ?>
                     </ul>
             <ul class="navbar-nav ml-auto ml-md-0">
                 <li class="nav-item dropdown">
@@ -50,14 +58,16 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            
+                            <a class="nav-link" href="home.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Home
+                            </a>
                             <a class="nav-link" href="admin.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
 
-                            
                               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePending" aria-expanded="false" aria-controls="collapsePending"> 
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Pending Requests
@@ -86,21 +96,23 @@
                                 </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading">Addons</div>
-                            
                             <a class="nav-link" href="allstudents.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 All Students
                             </a>
+                            <a class="nav-link" href="logout.php">
+                        <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
+                        Logout
+                    </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        Start Bootstrap
+                        Admin
                     </div>
                 </nav>
             </div>
-            
-
+           
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">

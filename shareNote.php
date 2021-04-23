@@ -15,7 +15,7 @@
     
 
      $note_name=$_POST['note_name'];
-     $s_id=$data['student_id'];
+     $s_id=$_SESSION['data']['student_id'];
      $course=$_POST['course'];
      $dept=$_POST['dept'];
      $description=$_POST['description'];
@@ -25,8 +25,9 @@
      $tmp2=$_FILES['file']['tmp_name'];
      $imgfolder="picture/".$image;
      $filefolder="files/".$file;
-     $datetime=date("l jS \of F Y h:i:s A");
-     
+     date_default_timezone_set("Asia/Dhaka");
+    //  $datetime=date("l jS \of F Y h:i:s A");
+     $datetime=date("Y-m-d h:i:sa");
 
      //$n_file=$_POST['n_file'];
      

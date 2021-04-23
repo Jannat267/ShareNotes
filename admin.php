@@ -1,4 +1,5 @@
 <?php
+   session_start();
    require('functions.php');
    $result=$function->view_note();
    
@@ -24,7 +25,7 @@
    </head>
    <body class="sb-nav-fixed">
       <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-         <a class="navbar-brand" href="#">Welcome</a>
+         <h2 class="navbar-brand" >Welcome</h2>
          <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
          <!-- Navbar Search-->
          <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -37,7 +38,11 @@
          </form>
          <!-- Navbar-->
          <ul class="navbar-nav ml-auto ml-md-0"style="color: white;">
-            Admin
+         <?php
+            $name=$_SESSION["ainfo"]["name"];
+            // $name="Admin";
+            $function->show_admin_name($name);
+        ?>
          </ul>
          <ul class="navbar-nav ml-auto ml-md-0">
             <li class="nav-item dropdown">
@@ -57,6 +62,11 @@
                   <div class="nav">
                      <div class="sb-sidenav-menu-heading">Core</div>
                      
+                     <a class="nav-link" href="home.php">
+                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i>
+                     Home </div> </a>
+                     
+                     
                      <div class="sb-sidenav-menu-heading">Interface</div>
                      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePending" aria-expanded="false" aria-controls="collapsePending"> 
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -71,23 +81,7 @@
                             </div>
 
 
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Authentication
-                                <div class="sb-sidenav-collapse-arrow"> <i class="fas fa-angle-down"></i> </div>
-                            </a>
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingThree" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                            <a class="nav-link" href="login.php">Login</a>
-                                            <a class="nav-link" href="register.php">Register</a>
-                                            <a class="nav-link" href="logout.php">Logout</a>
-                                           
-                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                        </nav>
-                                    </div>
-                                </nav>
-                            </div>
+                            
 
                      <div class="sb-sidenav-menu-heading">Addons</div>
                      
@@ -95,6 +89,10 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 All Students
                      </a>
+                     <a class="nav-link" href="logout.php">
+                        <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
+                        Logout
+                    </a>
                   </div>
                </div>
                <div class="sb-sidenav-footer">
@@ -108,41 +106,42 @@
                <div class="container-fluid">
                   <h1 class="mt-4">Dashboard</h1>
                   <ol class="breadcrumb mb-4">
-                     <li class="breadcrumb-item active">Dashboard</li>
+                     <li class="breadcrumb-item active">Admin Dashboard</li>
                   </ol>
                   <div class="row">
                      <div class="col-xl-3 col-md-6">
                         <div class="card bg-primary text-white mb-4">
-                           <div class="card-body">Primary Card</div>
+                           <div class="card-body">Home Page</div>
                            <div class="card-footer d-flex align-items-center justify-content-between">
-                              <a class="small text-white stretched-link" href="#">View Details</a>
+                              <a class="small text-white stretched-link" href="home.php">Go to home</a>
                               <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                            </div>
                         </div>
                      </div>
                      <div class="col-xl-3 col-md-6">
                         <div class="card bg-warning text-white mb-4">
-                           <div class="card-body">Warning Card</div>
+                           <div class="card-body">Pending Notes</div>
                            <div class="card-footer d-flex align-items-center justify-content-between">
-                              <a class="small text-white stretched-link" href="#">View Details</a>
+                              <a class="small text-white stretched-link" href="pendingNote.php">View Details</a>
+                              <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                           </div>
+                        </div>
+                     </div>
+                    
+                     <div class="col-xl-3 col-md-6">
+                        <div class="card bg-danger text-white mb-4">
+                           <div class="card-body">Pending Studenst</div>
+                           <div class="card-footer d-flex align-items-center justify-content-between">
+                              <a class="small text-white stretched-link" href="pendingStudent">View Details</a>
                               <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                            </div>
                         </div>
                      </div>
                      <div class="col-xl-3 col-md-6">
                         <div class="card bg-success text-white mb-4">
-                           <div class="card-body">Success Card</div>
+                           <div class="card-body">All Student</div>
                            <div class="card-footer d-flex align-items-center justify-content-between">
-                              <a class="small text-white stretched-link" href="#">View Details</a>
-                              <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-xl-3 col-md-6">
-                        <div class="card bg-danger text-white mb-4">
-                           <div class="card-body">Danger Card</div>
-                           <div class="card-footer d-flex align-items-center justify-content-between">
-                              <a class="small text-white stretched-link" href="#">View Details</a>
+                              <a class="small text-white stretched-link" href="allstudents.php">View Details</a>
                               <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                            </div>
                         </div>
@@ -187,17 +186,94 @@
                                  <td><?= $row['course']; ?> </td>
                                  <td><?= $row['dept']; ?> </td>
                                  <td><?= $row['description']; ?> </td>
-                                 <td><?= $row['datetime']; ?> </td>
+                                 <td><?= date("l jS \of F Y h:i:s A",strtotime($row['datetime'])); ?> 
+                                 </td>
                                 
                                  <td>
-                                    <a href="imageview.php?image=<?=($row['n_image']);?>"><?= $row['n_image']; ?>
-                                    </a> 
+                                 <img src="picture/<?php echo $row['n_image']; ?>" height=50rem; 
+                                                 data-toggle="modal"
+                                                 data-target="#exampleModal-<?php echo $row['n_name']; ?>">
+
+                                            <div class="modal fade" id="exampleModal-<?php echo $row['n_name']; ?>"
+                                                 tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                 aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Modal
+                                                                title</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <img src="picture/<?php echo $row['n_image']; ?>"
+                                                                 height=350rem; width=450rem;>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Close
+                                                            </button>
+                                                            <button type="button" class="btn btn-primary">Save changes
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> 
                                  </td>
                                  <td>
-                                    <a href="fileview.php?file=<?= ($row['n_file']); ?>"> 
-                                    <?= $row['n_file']; ?>
-                                    </a>
-                                </td>
+                                            <a href="" data-toggle="modal"
+                                               data-target="#exampleModalCenter-<?php echo $row['n_name']; ?>"
+                                               id="file">
+                                                <?php echo $row['n_file']; ?>
+                                            </a>
+                                            <div class="modal fade"
+                                                 id="exampleModalCenter-<?php echo $row['n_name']; ?>"
+                                                 tabindex="-1" role="dialog"
+                                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal
+                                                                title</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body" id="modalbody">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <div class="row">
+                                                                        <div class="col-7">
+                                                                            <img src="picture/<?php echo $row['n_image']; ?>" width="250rem" height="auto" style="border: 2px solid #2c3e50; border-radius: 5px">
+                                                                        </div>
+                                                                        <div class="col-5">
+                                                                            <ol style="list-style-type: none">
+                                                                                <li><span class="font-weight-bold">Note Name: </span><?= $row['n_name']; ?> </li>
+                                                                                <li><span class="font-weight-bold">Course Name: </span><?= $row['course']; ?> </li>
+                                                                                <li><span class="font-weight-bold">Department: </span><?= $row['dept']; ?> </li>
+                                                                                <li><span class="font-weight-bold">Description: </span><?= $row['description']; ?></li>
+                                                                                <li><span class="font-weight-bold">Upload Time: </span><?= $row['datetime']; ?></li>
+                                                                            </ol>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Close
+                                                            </button>
+                                                            <a href="files/<?php echo $row['n_file'] ?>"
+                                                               download="<?php echo $row['n_file']; ?>"
+                                                               class="btn btn-primary">Download</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                  <td>
                                     <!-- <form method="POST"> -->
                                     <a href="admin.php?delete=<?=($row['n_id']); ?>" class="btn btn-danger" type="submit" name="delete">Delete</a> <!-- </form> -->

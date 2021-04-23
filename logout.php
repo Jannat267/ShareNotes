@@ -1,6 +1,6 @@
 <?php
     require('functions.php');
-     $function->logout();
+     $logout=$function->logout();
     
    
 ?>

@@ -1,6 +1,5 @@
 <?php 
-require('functions.php');
-include('sidenav.php');
+require('sidenav.php');
 $result=$function->pending_students();
 
 if (isset($_GET['approve'])) {
@@ -14,9 +13,7 @@ if (isset($_GET['cancel'])) {
 
     $id=$_GET['cancel'];
     $function->delete_student($id);
-}
-
-?>
+}?>
 
 <!DOCTYPE html>
 <html>
@@ -32,6 +29,8 @@ if (isset($_GET['cancel'])) {
 <body>
 		<div class="container mr-5" style="width: 1050px;">
          <div class="row justify-content-center">
+
+         
             <h1 class="text-info"> Show Information</h1>
              <div class="card mb-4">
                      <div class="card-header">
@@ -42,25 +41,25 @@ if (isset($_GET['cancel'])) {
                         <div class="table-responsive">
                            <table class="table table-hover table-bordered" id="dataTable" width="100%" cellspacing="0">
                               <thead>
-                  <th>Student Name</th>
-                  <th>Student Id</th>
-                  <th>Depertment</th>
-                  <th>University Name</th>
-                  <th>Address</th>
-                  <th>Email</th>
-                  <th>Action</th>
-               </thead>
+                              <th>Student Name</th>
+                              <th>Student Id</th>
+                              <th>Depertment</th>
+                              <th>University Name</th>
+                              <th>Address</th>
+                              <th>Email</th>
+                              <th>Action</th>
+                           </thead>
                               <tfoot>
-                  <th>Student Name</th>
-                  <th>Student Id</th>
-                  <th>Depertment</th>
-                  <th>University Name</th>
-                  <th>Address</th>
-                  <th>Email</th>
-                  <th>Action</th>
-               </tfoot>
-                  <?php
-                   while ($row = $result->fetch_assoc()) { ?>
+                              <th>Student Name</th>
+                              <th>Student Id</th>
+                              <th>Depertment</th>
+                              <th>University Name</th>
+                              <th>Address</th>
+                              <th>Email</th>
+                              <th>Action</th>
+                               </tfoot>
+                  
+                  <?php while ($row = $result->fetch_assoc()) { ?>
                <tr>
                   <td><?= $row['student_name']; ?> </td>
                   <td><?= $row['student_id']; ?> </td>
@@ -75,8 +74,8 @@ if (isset($_GET['cancel'])) {
                    <a href="pendingStudent.php?cancel=<?=($row['id']); ?>" class="btn btn-danger">Cancel</a>
 
                   </td>
-              </tr>
-            <?php   }  ?>
+                  </tr>
+                  <?php } ?>
 
                     
                               

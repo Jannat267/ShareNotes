@@ -1,4 +1,5 @@
 <?php
+
 class notes {
 
 	function __construct()
@@ -15,6 +16,7 @@ class notes {
             die("database connection failed".$this->connection->connect_error);
 
         }
+		
 
     }
     
@@ -42,7 +44,13 @@ class notes {
 	public function approve_student($id)
 	{
 
-		$sql=$this->connection->query("UPDATE `student` SET `approval` = '1' WHERE `student`.`id` = $id") or die($this->connection->error);
+		if(($this->connection->query("UPDATE `student` SET `approval` = '1' WHERE `student`.`id` = $id") or die($this->connection->error)) ==true)
+		{
+			echo " <div class='p-3 mb-2 bg-success text-white container mr-5' style='width: 1050px;'><marquee>Student Approved Successfully!!!</marquee></div>"; 
+			header('Location: '.$_SERVER['PHP_SELF']);
+			
+		}
+
 	}
 	public function delete_student($id)
 	{
@@ -50,12 +58,31 @@ class notes {
 		if(($this->connection->query("DELETE FROM `student` WHERE  id =$id ") or die($this->connection->error)) ==true)
 		{
 			header('Location: '.$_SERVER['PHP_SELF']);
+			echo " <div class='p-3 mb-2 bg-danger text-white container mr-5' style='width: 1050px;'><marquee>Account has been deleted!!!</marquee></div>"; 
 		}
 	}
+    public function check_student($email,$pass)
+	{
+		if ($sql=$this->student_login($email,$pass))
+      {
+        $_SESSION['data']= mysqli_fetch_assoc($sql);
+        $num_rows = mysqli_num_rows($sql);
+        if ($num_rows == 1) {
+            
+            header("location:dashboard.php");
+        } 
+		else {
 
+			echo " <div class='p-3 mb-2 bg-danger text-white'>Wrong email or password !!! Or you are not approved yet!</div>"; 
+		}
+        
+      }
+
+     
+	}
 	public function student_login($email,$pass)
 	{
-		$sql=$this->connection->query("SELECT * FROM `student` WHERE email='$email' AND password='$pass'") or die($this->connection->error);
+		$sql=$this->connection->query("SELECT * FROM `student` WHERE email='$email' AND password='$pass' AND approval='1'") or die($this->connection->error);
         return $sql;
 	}
 
@@ -83,7 +110,11 @@ class notes {
 
 	public function approve_note($id)
 	{
-		$sql=$this->connection->query("UPDATE `notes` SET `approval` = '1' WHERE `notes`.`n_id` = $id") or die($this->connection->error);
+		if(($this->connection->query("UPDATE `notes` SET `approval` = '1' WHERE `notes`.`n_id` = $id") or die($this->connection->error)) ==true)
+		{
+			header('Location: '.$_SERVER['PHP_SELF']);
+			echo " <div class='p-3 mb-2 bg-success text-white container mr-5' style='width: 1050px;'><marquee>Note Approved Successfully!!!</marquee></div>"; 
+		}
 	}
 
 	public function delete_note($id)
@@ -91,13 +122,30 @@ class notes {
 		if(($this->connection->query("DELETE FROM `notes` WHERE  n_id =$id ") or die($this->connection->error)) ==true)
 		{
 			header('Location: '.$_SERVER['PHP_SELF']);
+			echo " <div class='p-3 mb-2 bg-danger text-white container mr-5' style='width: 1050px;'><marquee>Note has been deleted!!!</marquee></div>"; 
 		}
 	}
 
     public function admin_login($email,$pass)
 	{
   	  $sql=$this->connection->query("SELECT * FROM `admin` WHERE email='$email' AND password='$pass'") or die($this->connection->error);
-      return $sql;
+
+		
+			$_SESSION['ainfo']= mysqli_fetch_assoc($sql);
+			
+			$num_rows = mysqli_num_rows($sql);
+			if ($num_rows == 1) {
+				//echo $num_row_pass."<br>";
+				//$_SESSION['id']=$row['id'];
+				header("location:admin.php");
+			}
+			else {
+	
+				echo " <div class='p-3 mb-2 bg-danger text-white'>Wrong email or password!!!</div>"; 
+			}
+	
+			
+			
 	}
     public function logout()
 	{
@@ -109,10 +157,10 @@ class notes {
 		session_destroy();
 
 		// Include URL for Login page to login again.
-		header("Location: login.php");
+		header('Location: login.php');
 		exit;
 	}
-	public function adminlogout()
+	public function admin_logout()
 	{
 		// Initialize the session.
 		session_start();
@@ -122,9 +170,28 @@ class notes {
 		session_destroy();
 
 		// Include URL for Login page to login again.
-		header("Location: adminlogin.php");
+		header('Location: adminlogin.php');
 		exit;
 	}
+	public function show_admin_name($name)
+	{
+		if(empty($name))
+            {
+                header('Location: adminlogin.php');
+            }
+            else
+        echo $name;
+	}
+	public function showname($name)
+	{
+		if(empty($name))
+            {
+                header('Location: login.php');
+            }
+            else
+        echo $name;
+	}
+	
 }
 
 

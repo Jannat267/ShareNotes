@@ -1,6 +1,6 @@
 <?php 
-   include('sidenav.php');
-   require('functions.php');
+   
+   require('sidenav.php');
    $result=$function->view_student();
    if (isset($_GET["delete"])) {
 

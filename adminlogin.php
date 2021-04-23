@@ -7,28 +7,14 @@
 
     if (isset($_POST["login"])) {
 
-        $email=$_POST['log_email'];
-        $pass=$_POST['log_pass'];
-        $_SESSION['email'] =$email;
-        $_SESSION['pass'] = $pass;
-
-       if ($sql=$function->admin_login($_SESSION['email'],$_SESSION['pass'])) 
-      {
-        $_SESSION['data']= mysqli_fetch_assoc($sql);
+        $_SESSION['email']=$_POST['log_email'];
+        $_SESSION['pass']=$_POST['log_pass'];
         
-        $num_rows = mysqli_num_rows($sql);
-        if ($num_rows == 1) {
-            //echo $num_row_pass."<br>";
-            //$_SESSION['id']=$row['id'];
-            header("location:admin.php");
-        }
 
-        }
+       $function->admin_login($_SESSION['email'],$_SESSION['pass']);
+       
 
-         else {
-
-            echo " <div class='p-3 mb-2 bg-danger text-white'>Wrong email or password!!!</div>"; 
-        }
+         
     }
 
 ?>
