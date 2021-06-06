@@ -31,7 +31,34 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     </head>
 
-    <body class="bg-primary">
+    <body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+         <div class="container">
+            <a class="navbar-brand" href="#">Share Notes</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                     <a class="nav-link" href="#">Home
+                     <span class="sr-only">(current)</span>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="register.php">Sign Up</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="login.php">Sign in</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="adminlogin.php">Admin</a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>

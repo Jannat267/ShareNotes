@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2021 at 08:26 PM
+-- Generation Time: Jun 06, 2021 at 05:19 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `id` int(10) NOT NULL,
+  `name` varchar(255) NOT NULL DEFAULT 'Admin',
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -37,8 +38,8 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `email`, `password`) VALUES
-(1, 'admin@gmail.com', 'admin');
+INSERT INTO `admin` (`id`, `name`, `email`, `password`) VALUES
+(1, 'Admin', 'admin@gmail.com', 'admin');
 
 -- --------------------------------------------------------
 
@@ -55,7 +56,7 @@ CREATE TABLE `notes` (
   `description` varchar(255) NOT NULL,
   `n_image` varchar(255) NOT NULL,
   `n_file` varchar(255) NOT NULL,
-  `datetime` varchar(255) DEFAULT NULL,
+  `datetime` datetime(6) DEFAULT NULL,
   `approval` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -64,11 +65,16 @@ CREATE TABLE `notes` (
 --
 
 INSERT INTO `notes` (`n_id`, `s_id`, `n_name`, `course`, `dept`, `description`, `n_image`, `n_file`, `datetime`, `approval`) VALUES
-(36, 'EEE67676', 'Electronics', 'EEE121', 'EEE', 'Electronics is the study of how to control the flow of electrons.', '555-timer-in-Astable-mode-proteus-simulation.jpg', 'L1 Chapter 1_S21617.ppt', NULL, 0),
-(40, 'CSE190283', 'chemistry1', 'chemistry1', 'chemistry', 'esfgydfhygf', 'd8e5f6dc60fead732d37cacadf192e50.jpg', '', NULL, 1),
-(42, 'BBA1232123', 'biochemistry', 'chemistry2', 'chemistry', 'chemistry isd edfjehfjef', 'd8e5f6dc60fead732d37cacadf192e50.jpg', 'physics-formulas.pdf', NULL, 0),
-(43, 'CSE190283', 'physics4', 'physics234', 'physics', 'physics isd edfjehfjef', 'a2db56de331d3696ff37e052ec5d42e3.png', 'physics-formulas.pdf', NULL, 1),
-(44, 'CSE190283', 'EEE5', 'EEE231', 'EEE', 'Electronics is the study of how to control the flow of electrons.', 'picture (1).jfif', 'physics-formulas.pdf', NULL, 1);
+(48, 'CSE190283', 'chemistry24', 'chemistry', 'chemistry', 'chemistry isd edfjehfjef', 'd8e5f6dc60fead732d37cacadf192e50.jpg', '', '2021-04-20 02:05:05.000000', 1),
+(49, 'CSE190283', 'Economics2', 'Economics121', 'CSE', 'Economics is based on ...........', 'picture (1) (1).jfif', 'physics-formulas.pdf', '2021-04-07 08:08:00.000000', 1),
+(50, 'BBA1232123', 'physics2', 'Physics214', 'CSE', 'Circuits base....', 'picture_picture (1).jfif', 'physics-formulas.pdf', '2021-04-07 08:09:00.000000', 1),
+(51, 'BBA1232123', 'physics4', 'Physics214', 'CSE', 'physics isd edfjehfjef', 'picture (1) (1).jfif', 'physics-formulas.pdf', '2021-06-07 08:08:00.000000', 1),
+(52, '', 'physics24675', 'physics1', 'science', 'esfgydfhygf', 'eX3.gif', '', '2020-04-07 08:08:00.000000', 1),
+(53, 'CSE190283', 'physics24675', 'physics1', 'science', 'esfgydfhygf', 'eX3.gif', '', '2021-08-07 08:08:00.000000', 1),
+(54, 'CSE190283', 'biochemistry', 'chem5', 'chemistry', 'chemistry isd edfjehfjef', '3d-illustration-molecule-model-science-260nw-626488493.webp', 'physics-formulas.pdf', '2021-04-07 08:08:00.000000', 1),
+(55, 'CSE190283', 'chemistry24', 'C101', 'chemistry', 'chemistry isd edfjehfjef', '3d-illustration-molecule-model-science-260nw-626488493.webp', 'physics-formulas.pdf', '2021-09-07 08:08:00.000000', 0),
+(56, '', 'chemistry24', 'C101', 'CSE', 'chemistry isd edfjehfjef', 'wp5615561.jpg', '', '2021-04-24 00:00:00.000000', 0),
+(57, '', 'physics2', 'rgersgr', 'chemistry', 'chemistry isd edfjehfjef', 'picture.png', '', '2021-04-24 01:39:43.000000', 0);
 
 -- --------------------------------------------------------
 
@@ -93,21 +99,20 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `student_name`, `student_id`, `dept`, `u_name`, `address`, `email`, `password`, `approval`) VALUES
-(9, 'Abdur Rahim', 'EEE23454333', 'EEE', 'uits', '1/2 uttar badda', 'rahim@gmail.com', 'rahim123', 1),
-(12, 'Farhana sumi', 'ECE24718', 'Math', 'AIUB', '3/3uttara,dhaka', 'sumi@gmail.com', 'a52eb3f5da9d81b0d010bc83ad95c9dc', 0),
+(12, 'Farhana sumi', 'ECE24718', 'Math', 'AIUB', '3/3uttara,dhaka', 'sumi@gmail.com', 'a52eb3f5da9d81b0d010bc83ad95c9dc', 1),
 (14, 'Lamia Akter', 'EEE34545', 'EEE', 'AIUB', '34/3chawkbajar,Dhaka', 'lamia@gmail.com', 'c02ed5247c2361f229d150d0f0d5caf7', 1),
-(15, 'Emran Hossain', 'CSE12334', 'CSE', 'AIUB', 'a/c Banasree,Dhaka', 'emran@gmail.com', '02c2ec1e3f21e97dd5ac747147a141e0', 0),
-(16, 'Farjana', 'ECE2363', 'ECE', 'uits', 'panthapath,Dhaka', 'farjana@gmail.com', '812df2b03649824758333a931d930d5c', 0),
+(15, 'Emran Hossain', 'CSE12334', 'CSE', 'AIUB', 'a/c Banasree,Dhaka', 'emran@gmail.com', '02c2ec1e3f21e97dd5ac747147a141e0', 1),
+(16, 'Farjana', 'ECE2363', 'ECE', 'uits', 'panthapath,Dhaka', 'farjana@gmail.com', '812df2b03649824758333a931d930d5c', 1),
 (17, 'Rakib ', 'EEE23429', 'EEE', 'uits', '33/3uttara,dhaka', 'rakib@gmail.com', 'c6a12dd17a3aa185b3d23b77b36e8a80', 1),
 (21, 'Sajib dewan', 'EEE67676', 'EEE', 'uits', '34/2Dhanmondi', 'sajib@gmail.com', '1622d00ad661038a57592db7959a1da8', 1),
 (22, 'Nabila', 'CSE387276', 'CSE', 'uits', '45/1dhanmondi', 'nabila@gmail.com', '9c8aaad368f10f55699450d759a72501', 1),
 (24, 'Alamin', 'CSE190283', 'CSE', 'AIUB', 'r/a panthapath,Dhaka', 'alamin@gmail.com', '2513141d3dae5213d9a78e748a76ee45', 1),
 (25, 'Arnab Hasan', 'ECE23637', 'ECE', 'uits', 'a/9 Banasree,Dhaka', 'arnab@gmail.com', '5a2ab1c31e56a86d224d567249461990', 1),
 (26, 'Kobir', 'CSE192393', 'CSE', 'uits', '2/3banasree,dhaka', 'kobir@gmail.com', '75708129c87db59c25e31243c2d01139', 1),
-(27, 'limon', 'EEE24465', 'EEE', 'uits', '33/3uttara,dhaka', 'limon@gmail.com', 'df80f33867bde01b50824cf77c9ab592', 0),
+(27, 'limon', 'EEE24465', 'EEE', 'uits', '33/3uttara,dhaka', 'limon@gmail.com', 'df80f33867bde01b50824cf77c9ab592', 1),
 (28, 'Motaleb', 'bba', 'BBA', 'uits', '33/3uttara,dhaka', 'motaleb@gmail.com', '5cf50507699392d7c153f5953af0f0a0', 1),
 (29, 'Mahin', 'BBA1232123', 'BBA', 'uits', '33/3uttara,dhaka', 'mahin@gmail.com', '8254691054c7657c5ac92a20eafbb6f6', 1),
-(30, 'sahid', 'CSE190283', 'CSE', 'AIUB', '33/6uttara,dhaka', 'sahid@gmail.com', '7fbea4e3bf2bad2d4285ac687ee0c42f', 0);
+(31, 'Sajib dewan', 'EEE67676f5', 'science', 'uits', '33/3uttara,dhaka', 'sajib2@gmail.com', '1622d00ad661038a57592db7959a1da8', 1);
 
 --
 -- Indexes for dumped tables
@@ -146,13 +151,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `notes`
 --
 ALTER TABLE `notes`
-  MODIFY `n_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `n_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
