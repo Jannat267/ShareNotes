@@ -1,7 +1,7 @@
 <?php
    session_start();
    require('functions.php');
-   $result=$function->view_note();
+   $result=$function->view_note();//storing notes in result variable
    
    if (isset($_GET["delete"])) {
    
