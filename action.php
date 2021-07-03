@@ -12,8 +12,6 @@
  
        $function->check_student($_SESSION['email'],$_SESSION['pass']);
        
-       
-       
    }
     
     
