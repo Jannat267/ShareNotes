@@ -1,6 +1,6 @@
 <?php
-		 session_start();
-     require('functions.php');
+	   session_start();
+       require('functions.php');//attaching functions.php page
        $email = '';
        $pass = '';
        $log_id='';
