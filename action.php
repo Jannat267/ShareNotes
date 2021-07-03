@@ -3,7 +3,7 @@
        require('functions.php');//attaching functions.php page
        $email = '';
        $pass = '';
-       $log_id='';
+       $log_id='';// taste
        
    if (isset($_POST["login"])) {
  
